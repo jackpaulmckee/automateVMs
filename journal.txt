@@ -1,0 +1,7 @@
+This is where I make notes of things that happened during the project. For future reference.
+
+
+Problems:
+- issue booting up due to misconfiguration of virtual and/or physical hardware.
+    - esxi and vcenter could not boot bc my physical machine does not have enough RAM
+    - ubuntu server could not boot bc I did not allocate enough storage to its virtual disk

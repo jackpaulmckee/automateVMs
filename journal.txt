@@ -4,6 +4,7 @@ This is where I make notes of things that happened during the project. For futur
 Problems:
 - Virtual machine settings issue
     - ubuntu server could not boot bc I did not allocate enough storage to its virtual disk
+    - cloned a server vm and it created a vm with an identical ip address
 
 - link issues
     - could not use my physical host machine to be the control node bc regular windows does not support ansible as a control node

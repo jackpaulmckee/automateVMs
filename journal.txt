@@ -2,6 +2,12 @@ This is where I make notes of things that happened during the project. For futur
 
 
 Problems:
-- issue booting up due to misconfiguration of virtual and/or physical hardware.
-    - esxi and vcenter could not boot bc my physical machine does not have enough RAM
+- Virtual machine settings issue
     - ubuntu server could not boot bc I did not allocate enough storage to its virtual disk
+
+- link issues
+    - could not use my physical host machine to be the control node bc regular windows does not support ansible as a control node
+
+- physical hardware limitations
+    - esxi and vcenter could not both run bc my physical machine does not have enough RAM
+    - im even having trouble running 2 server VMs and 1 client VM in workstation pro. Just bc my computer has only 16gb of RAM

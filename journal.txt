@@ -1,10 +1,26 @@
 This is where I make notes of things that happened during the project. For future reference.
 
 
+Concepts:
+- familiarize myself with running bash commands in the terminal
+- familiarize myself with git and github
+
+
+
+Actions:
+- confirm VMs can ping eachother and the internet
+- confirm VMs can all ssh into eachother
+- generated key pair to allow for ssh key authentication
+
+
+
+
+
 Problems:
 - Virtual machine settings issue
     - ubuntu server could not boot bc I did not allocate enough storage to its virtual disk
     - cloned a server vm and it created a vm with an identical ip address
+    - power off vs shut down guest corrupted my git repo. And could possibly do more harm than that too. Learned to use shut down guest
 
 - link issues
     - could not use my physical host machine to be the control node bc regular windows does not support ansible as a control node

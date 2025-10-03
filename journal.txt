@@ -4,6 +4,8 @@ This is where I make notes of things that happened during the project. For futur
 Concepts:
 - familiarize myself with running bash commands in the terminal
 - familiarize myself with git and github
+- manually serve an apache webpage 
+- learn syntax of ansible, yaml, jinja, html
 
 
 

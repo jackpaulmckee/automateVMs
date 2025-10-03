@@ -6,7 +6,7 @@
   vars:
     web_package: apache2
     web_service: apache2
-    site title: "hello from jacks ansible!"
+    site_title: "hello from jacks ansible!"
     doc_root: /var/www/html
 
   tasks:
@@ -14,7 +14,7 @@
       apt:      
         name: "{{ web_package }}"
         state: present
-        update cache: yes
+        update_cache: yes
     
     - name: ensure apache is started and enabled
       service: 
@@ -24,7 +24,7 @@
 
     - name: deploy index.html
       template:
-        src: templates/index.html.j2
+        src: ../templates/index.html.j2
         dest: "{{ doc_root }}/index.html"
         owner: www-data
         group: www-data
@@ -36,4 +36,3 @@
       service:
         name: "{{ web_service }}"
         state: reloaded
-        

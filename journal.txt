@@ -36,3 +36,5 @@ Problems:
     - im even having trouble running 2 server VMs and 1 client VM in workstation pro. Just bc my computer has only 16gb of RAM
 
 
+backrefs???
+file structure that happens above users and home???

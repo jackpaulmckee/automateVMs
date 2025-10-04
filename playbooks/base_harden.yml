@@ -16,7 +16,7 @@
         state: present
         update_cache: yes
 
-    - name: create users with sudo and ssh key
+    - name: create users with sudo privileges
       user: 
         name: "{{ item.name }}"
         groups: "{{ item.groups | default(omit) }}"
@@ -25,12 +25,11 @@
         create_home: yes
       loop: "{{ new_users }}"
 
-    - name: authorize keys
+    - name: add ssh keys for new users
       authorized_key: 
         user: "{{ item.name }}"
         key: "{{ item.ssh_key }}"
       loop: "{{ new_users }}"
-
 
     - name: configure ufw
       ufw:
@@ -42,4 +41,18 @@
         proto: tcp
     - ufw:
         state: enabled
-        
+
+    - name: harden ssh (disable password auth; disable access to root)
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^#?PasswordAuthentication'
+        line: 'PasswordAuthentication no'
+        state: present
+        backrefs: yes
+      notify: restart ssh
+
+  handlers:
+    - name: restart ssh
+      service: 
+        name: ssh
+        state: restarted

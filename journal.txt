@@ -4,8 +4,9 @@ This is where I make notes of things that happened during the project. For futur
 Concepts:
 - familiarize myself with running bash commands in the terminal
 - familiarize myself with git and github
-- manually serve an apache webpage 
 - learn syntax of ansible, yaml, jinja, html
+- ansible variables, modules, functions, loops
+- ssh contexts, priveleges, key authentication
 
 
 
@@ -13,6 +14,8 @@ Actions:
 - confirm VMs can ping eachother and the internet
 - confirm VMs can all ssh into eachother
 - generated key pair to allow for ssh key authentication
+- manually serve an apache webpage 
+- serve a webpage using an ansible playbook
 
 
 
@@ -26,7 +29,10 @@ Problems:
 
 - link issues
     - could not use my physical host machine to be the control node bc regular windows does not support ansible as a control node
+    - even though ufw was enabled, the client VM could somehow still access that server's webpage
 
 - physical hardware limitations
     - esxi and vcenter could not both run bc my physical machine does not have enough RAM
     - im even having trouble running 2 server VMs and 1 client VM in workstation pro. Just bc my computer has only 16gb of RAM
+
+

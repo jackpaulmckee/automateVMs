@@ -1,0 +1,45 @@
+---
+- name: baseline hardening
+  hosts: webservers
+  become: yes
+
+  vars:
+    new_users:
+      - name: deploy
+        groups: sudo
+        ssh_key: "{{ lookup('file', '~/.ssh/id_ed25519.pub') }}"
+
+  tasks:
+    - name: ensure base packages are present
+      apt:
+        name: [vim, curl, git, ufw]
+        state: present
+        update_cache: yes
+
+    - name: create users with sudo and ssh key
+      user: 
+        name: "{{ item.name }}"
+        groups: "{{ item.groups | default(omit) }}"
+        shell: /bin/bash
+        state: present
+        create_home: yes
+      loop: "{{ new_users }}"
+
+    - name: authorize keys
+      authorized_key: 
+        user: "{{ item.name }}"
+        key: "{{ item.ssh_key }}"
+      loop: "{{ new_users }}"
+
+
+    - name: configure ufw
+      ufw:
+        rule: allow
+        name: "openssh"
+    - ufw:
+        rule: allow
+        port: "80"
+        proto: tcp
+    - ufw:
+        state: enabled
+        

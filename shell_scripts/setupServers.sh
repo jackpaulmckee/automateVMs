@@ -17,3 +17,27 @@ sudo apt install apache2 -y
 sudo systemctl status apache2
 sudo rm /var/www/html/index.html
 echo '<h4> hi this is jack and youve reached my ubunut server!!!!!!!!!<h4>' | sudo tee /var/www/html/index.html
+
+
+# install curl
+
+sudo apt update
+sudo apt install curl -y
+curl http://localhost
+
+
+
+
+# configure firewall
+
+sudo apt update
+sudo apt install ufw -y
+sudo ufw status verbose
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow ssh
+sudo ufw allow 'Apache'
+
+
+sudo ufw enable
+sudo ufw status numbered

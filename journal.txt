@@ -5,8 +5,12 @@ Concepts:
 - familiarize myself with running bash commands in the terminal
 - familiarize myself with git and github
 - learn syntax of ansible, yaml, jinja, html
-- ansible variables, modules, functions, loops
+- ansible playbooks, variables, modules, functions, loops
+- ansible roles, collections, modules, plugins
 - ssh contexts, priveleges, key authentication
+- APIs, SDKs
+- AWS
+- virtual environmets for python usage; system packages vs python packages
 
 
 
@@ -16,6 +20,7 @@ Actions:
 - generated key pair to allow for ssh key authentication
 - manually serve an apache webpage 
 - serve a webpage using an ansible playbook
+- configure baseline hardening of servers
 
 
 
@@ -38,3 +43,4 @@ Problems:
 
 backrefs???
 file structure that happens above users and home???
+Learn more about venv. When it's activated, what exactly is the difference of how files are accessed and used?

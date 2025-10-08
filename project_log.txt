@@ -3,3 +3,8 @@
     - but then "which ansible" was showing the version of ansible within the venv; while "ansible --version" was still showing as global location. Need to use "hash -r"
 - ok now where is my amazon.aws ansible collection located? How can I get this into my venv requirements?
     - for collections and potentially other things, the developer needs to create a separate collections/requirements.yml
+- ansible playbooks vs inventories
+- i could ssh into the instances of ec2. But i could not ping them from ansible
+    - Tough troubleshooting but it made sense after learning the diff between host keys and ssh keys. 
+        - unfortunately you cant automate host key checking of new hosts via ssh. So i turned host key checking off, which is safe for my lab
+        

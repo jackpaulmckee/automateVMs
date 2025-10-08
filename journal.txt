@@ -10,7 +10,9 @@ Concepts:
 - ssh contexts, priveleges, key authentication
 - APIs, SDKs
 - AWS
-- virtual environmets for python usage; system packages vs python packages
+- virtual environments for python usage; system packages vs python packages
+- dynamic inventories; ansible playbooks vs inventories
+- server authentication via host key vs user authentication via ssh key pairs
 
 
 
@@ -45,3 +47,4 @@ backrefs???
 file structure that happens above users and home???
 Learn more about venv. When it's activated, what exactly is the difference of how files are accessed and used?
 ansible collections requirements.yml grrrrrrrrrrrr
+install aws cli so that i can store aws credentials on my machine

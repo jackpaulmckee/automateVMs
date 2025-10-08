@@ -1,5 +1,5 @@
 ---
-- name: provision
+- name: provision instances of aws ec2
   hosts: localhost
   gather_facts: false
   collections: [amazon.aws]

@@ -52,3 +52,14 @@ pip3 --version
 sudo apt install -y python3-venv
 python3 -m venv .venv
 source .venv/bin/activate
+
+pip freeze > requirements.txt
+
+
+# set up ansible collection requirements
+mkdir -p collections
+ansible-galaxy collection list --format yaml > collections/requirements.yml
+
+# amazon aws
+sudo apt install -y awscli
+

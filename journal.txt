@@ -44,3 +44,4 @@ Problems:
 backrefs???
 file structure that happens above users and home???
 Learn more about venv. When it's activated, what exactly is the difference of how files are accessed and used?
+ansible collections requirements.yml grrrrrrrrrrrr

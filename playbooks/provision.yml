@@ -1,0 +1,36 @@
+---
+- name: provision
+  hosts: localhost
+  gather_facts: false
+  collections: [amazon.aws]
+
+  tasks:
+    - name: create_key_pair
+      ec2_key:
+        name: jacks_key
+        state: present
+        key_material: "{{ lookup('file', '~/.ssh/id_ed25519.pub') }}"
+
+    - name: security group allowing ssh
+      ec2_security_group:
+        name: jacks_sg
+        description: ssh access
+        rules:
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            cidr_ip: 0.0.0.0/0
+
+    - name: launch 3 t3.micro instances
+      ec2_instance:
+        name: jacks_app
+        key_name: jacks_key
+        instance_type: t3.micro
+        image_id: ami-03aa99ddf5498ceb9
+        security_groups: [jacks_sg]
+        count: 3
+        tags:
+          environment: test
+          owner: jack (hi its me)
+      register: ec2
+

@@ -149,7 +149,7 @@ collections:
     version: 1.0.3
   - name: netapp.cloudmanager
     version: 21.24.0
-  - name: netapp.ontap:
+  - name: netapp.ontap
     version: 23.1.0
   - name: netapp.storagegrid
     version: 21.15.0

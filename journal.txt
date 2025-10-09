@@ -11,7 +11,7 @@ Concepts:
 - APIs, SDKs
 - AWS
 - virtual environments for python usage; system packages vs python packages
-- dynamic inventories; ansible playbooks vs inventories
+- dynamic inventories; ansible playbooks vs inventories; group variables
 - server authentication via host key vs user authentication via ssh key pairs
 
 
@@ -23,6 +23,7 @@ Actions:
 - manually serve an apache webpage 
 - serve a webpage using an ansible playbook
 - configure baseline hardening of servers
+- deploy ubuntu servers via ansible
 
 
 

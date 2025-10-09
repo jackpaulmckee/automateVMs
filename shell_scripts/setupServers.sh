@@ -44,14 +44,6 @@ sudo ufw status numbered
 
 
 
-# install python
-
-sudo apt update
-sudo apt install -y python3-pip
-pip3 --version
-sudo apt install -y python3-venv
-python3 -m venv .venv
-source .venv/bin/activate
 
 pip freeze > requirements.txt
 

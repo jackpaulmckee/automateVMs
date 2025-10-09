@@ -1,1 +1,7 @@
+# Ignore Python the virtual environment
 .venv/
+venv/
+
+# Ignore downloaded Ansible collections, but dont ignore the manifest
+collections/*
+!collections/requirements.yml

@@ -13,3 +13,11 @@ i could ssh into the instances of ec2. But i could not ping them from ansible
         - unfortunately you cant automate host key checking of new hosts via ssh. So i turned host key checking off, which is safe for my lab
 
 I GOT ANSIBLE TO PING MY EC2 INSTANCES LETS GOOOOOO
+
+
+10/09/25:
+
+while it's fresh in my mind, I pieced together my rough draft of a setup shell script into a an actual usable script.
+    - i want my project to be conveniently repeatable and as automated as possible
+get ansible collections location understood and added to ansible.cfg and .gitignore
+    

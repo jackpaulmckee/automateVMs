@@ -4,26 +4,34 @@ This repo allows the user to deploy manage AWS virtual machines via ansible
 
 ---
 
-## Getting Started:
+## Get Set Up
 
 #### 1. Clone this repository
 
+install git
+clone
+
+#### If you dont have Python, install python packages:
+
+
+
 #### 2. set up your local venv for software package dependencies
 
-'
-python3 -m venv .venv
+
+'python3 -m venv .venv'
 source .venv/bin/activate
 pip install -r requirements.txt
-'
+
 
 3. install ansible collections that this project uses
 
-'
-ansible-galaxy collection install -r collections/requirements.yml
-ansible-galaxy collection install -r collections/requirements.yml -p collections
-'
 
-generate ssh keys on your host machine:
+'ansible-galaxy collection install -r collections/requirements.yml'
+'ansible-galaxy collection install -r collections/requirements.yml -p collections'
+
+
+generate ssh keys on your control node:
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -C "client to servers" -N ''
 
 
 ### 4: configure AWS credentials
@@ -32,7 +40,7 @@ generate ssh keys on your host machine:
 - generate access keys via the Identity and Access Management (IAM) section of your portal
 
 
-
+apply the access keys to the temp memory of your control node :
 
 '
 export AWS_ACCESS_KEY_ID=your-access-key

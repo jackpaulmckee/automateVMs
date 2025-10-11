@@ -1,3 +1,5 @@
 how does your team interact with git and each other? Is there a program repo stored somewhere on V?
 
 what OS do you use and how? I imagine work computer is windows. But then what does it look liek for you to access the B team system on site? Is it an ssh? I sit servers? clients? GUI? What does it look like?
+
+what are some features of vSphere that you use?

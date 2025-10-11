@@ -14,10 +14,27 @@ i could ssh into the instances of ec2. But i could not ping them from ansible
 
 I GOT ANSIBLE TO PING MY EC2 INSTANCES LETS GOOOOOO
 
+=========================================================================================
 
 10/09/25:
 
-while it's fresh in my mind, I pieced together my rough draft of a setup shell script into a an actual usable script.
+while it's fresh in my mind, I created and actual usable nice looking setup shell script, from the rough draft bits and pieces that I kept track of
     - i want my project to be conveniently repeatable and as automated as possible
 get ansible collections location understood and added to ansible.cfg and .gitignore
+
+=========================================================================================
+
+10/10/25:
+
+browsed through ESXi host client
+used vSphere client to:
+    - change settings on an existing VM
+    - create a new VM that is tuned for a particular OS and install that OS (photon OS)
+    - create a VM template from an existing VM, then create a new VM from that template
+    - use tags and searching to navigate and organize my inventory
+    - configured a host cluster to run vSphere High Availability (HA) and vSphere Fault Tolerance (FT)
+    - reconfigured existing alarm for CPU usage. Created new alarm for VM CPU ready time. Both are set at the vCenter server level
+    - disable Distributed Resource Scheduler (DRS) and use vMotion to migrate VMs from one host to another within the cluster
+    - monitor the performance of a host and create custom charts
+    - install and configure ESXi
     

@@ -49,3 +49,19 @@ file structure that happens above users and home???
 Learn more about venv. When it's activated, what exactly is the difference of how files are accessed and used?
 ansible collections requirements.yml grrrrrrrrrrrr
 install aws cli so that i can store aws credentials on my machine
+what is x86
+
+
+
+
+
+======================================================================
+NOTES
+======================================================================
+
+vSphere High Availability (HA) and vSphere Fault Tolerance (FT):
+    - HA uses heartbeat monitoring to detect host failure. Then the VMs that were running on the failed host are restarted on a different healthy host within the same cluster. Brief downtime <1min. This is a REACTIVE mechanism. Low resource cost
+    - FT keeps an identical, running copy of my VM on another host. If the primary host fails, the secondary VM instantly takes over. Zero downtime. Proactive mechanism. High resource cost
+        - HA is like an automatic backup generator — if the power goes out, it restarts your house.
+        - FT is like having a second power line running in parallel — if one line fails, you don’t even flicker.
+vSphere Distributed Resource Scheduler (DRS) automatically balances workloads across the hosts in a cluster. So that no one host gets overloaded while the others sit idle.

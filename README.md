@@ -45,7 +45,7 @@ ansible-playbook playbooks/provision.yml
 
 ansible-inventory -i inventories/aws_ec2.yml --graph
 ansible-inventory -i inventories/aws_ec2.yml --list
-ansible-inventory -i inventories/aws_ec2.yml all -m ping
+ansible -i inventories/aws_ec2.yml all -m ping
 
 
 ### project structure

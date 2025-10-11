@@ -43,3 +43,7 @@ used vSphere client to:
 
 10/11/25:
 
+tuned small details in readme.md, setup.sh, and playbooks
+reviewed aws playbooks and inventory, reviewed aws portal for where ssh keys, access keys, security groups, and instances are
+I GOT THE EC2 SERVERS TO EACH SERVE THEIR OWN WEB PAGE
+add idempotency and comments to provision.yml

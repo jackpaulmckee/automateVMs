@@ -20,17 +20,30 @@
             from_port: 22
             to_port: 22
             cidr_ip: 0.0.0.0/0
+          - proto: tcp
+            from_port: 80
+            to_port: 80
+            cidr_ip: 0.0.0.0/0
 
     - name: launch 3 t3.micro instances
       ec2_instance:
-        name: jacks-serv
+        exact_count: 3  # <-- for idempotency. Otherwise more and more servers would be launched
+        filters:  # <-- select the population to control
+          "tag:Name": "jacks-serv"  # <-- search existing instances matching this tag
+          "tag:environment": "test"
+          instance-state-name:  # <-- ensures that instances in all states other than "terminated" are considered
+            - pending
+            - running
+            - stopping
+            - stopped
+        name: jacks-serv  # <-- used for new instances
         key_name: jacks-key
         instance_type: t3.micro
         image_id: ami-00271c85bf8a52b84
         security_groups: [jacks-sg]
-        count: 3
-        tags:
+        wait: true  # <-- waits until the instances reach the "running" state, have an IP address, and are reachable from AWS's perspective
+        tags:  # <-- adds metadata tags to the created instances
           environment: test
           owner: jack (hi its me)
-      register: ec2
+      register: ec2 # <-- saves the output of this module into a variable named "ec2"
 

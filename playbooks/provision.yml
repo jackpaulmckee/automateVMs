@@ -26,7 +26,7 @@
         name: jacks-serv
         key_name: jacks-key
         instance_type: t3.micro
-        image_id: ami-03aa99ddf5498ceb9
+        image_id: ami-00271c85bf8a52b84
         security_groups: [jacks-sg]
         count: 3
         tags:

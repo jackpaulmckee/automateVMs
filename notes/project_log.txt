@@ -7,6 +7,7 @@ ok now where is my amazon.aws ansible collection located? How can I get this int
     - for collections and potentially other things, the developer needs to create a separate collections/requirements.yml
 
 ansible playbooks vs inventories
+created a dynamic inventory for AWS servers
 
 i could ssh into the instances of ec2. But i could not ping them from ansible
     - Tough troubleshooting but it made sense after learning the diff between host keys and ssh keys. 
@@ -37,4 +38,8 @@ used vSphere client to:
     - disable Distributed Resource Scheduler (DRS) and use vMotion to migrate VMs from one host to another within the cluster
     - monitor the performance of a host and create custom charts
     - install and configure ESXi
-    
+
+===========================================================================================
+
+10/11/25:
+

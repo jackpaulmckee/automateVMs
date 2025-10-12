@@ -1,0 +1,47 @@
+---
+- name: Install Prometheus and Grafana on the monitoring host
+  hosts: monitoringHost
+  become: yes
+
+  vars:
+    prometheus_cfg_path: /etc/prometheus/prometheus.yml
+    prometheus_pkg: prometheus
+    prometheus_service: prometheus
+    grafana_pkg: grafana
+    grafana_service: grafana-server
+  
+  tasks:
+    - name: Install Prometheus and Grafana
+      apt:
+        name: 
+          - "{{ prometheus_pkg }}"
+          - "{{ grafana_pkg }}"
+        state: present
+        update_cache: yes
+    
+    - name: Use a template and the current ansible inventory to create the Prometheus config. Then send it to the target machines
+      template:
+        src: "../templates/prometheus.yml.j2"
+        dest: "{{ prometheus_cfg_path }}"
+        owner: root
+        group: root
+        mode: "0644"
+      notify: Restart Prometheus
+    
+    - name: Ensure Prometheus is enabled and running
+      systemd:
+        name: "{{ prometheus_service }}"
+        state: started
+        enabled: yes
+    
+    - name: Ensure Grafana is enabled and running
+      systemd:
+        name: "{{ grafana_service }}"
+        state: started
+        enabled: yes
+  
+  handlers:
+    - name: Restart Prometheus
+      systemd:
+        name: "{{ prometheus_service }}"
+        state: restarted

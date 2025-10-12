@@ -47,3 +47,9 @@ tuned small details in readme.md, setup.sh, and playbooks
 reviewed aws playbooks and inventory, reviewed aws portal for where ssh keys, access keys, security groups, and instances are
 I GOT THE EC2 SERVERS TO EACH SERVE THEIR OWN WEB PAGE
 add idempotency and comments to provision.yml
+went in vSphere to: create a cluster, create VMs, upload and mount an iso file
+
+10/12/25:
+
+created prom_node_exporter.yml
+difference between apt and systemd, ansible when conditions, using group_vars files 

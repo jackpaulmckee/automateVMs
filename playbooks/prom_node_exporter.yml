@@ -1,0 +1,45 @@
+---
+- name: Install and expose Prometheus Node Exporter on all monitored servers
+  hosts: webservers
+  become: yes
+
+  vars:
+    node_exporter_pkg: prometheus-node-exporter
+    node_exporter_service: prometheus-node-exporter
+    node_exporter_port: 9100
+
+  tasks:
+    - name: Ensure apt cache is updated
+      apt:
+        update_cache: yes
+        cache_valid_time: 86400
+    
+    - name: Install Prometheus Node Exporter
+      apt:
+        name: "{{ node_exporter_pkg }}"
+        state: present
+    
+    - name: Ensure Node Exporter is enabled and running
+      systemd:
+        name: "{{ node_exporter_service }}"
+        state: started
+        enabled: yes
+    
+    - name: Install UFW if missing
+      apt:
+        name: ufw
+        state: present
+    
+    - name: Allow Prometheus server to scrape Node Exporter
+      ufw:
+        rule: allow
+        proto: tcp
+        port: "{{ node_exporter_port }}"
+        src: "{{ prometheus_server_ip }}"
+      when: prometheus_server_ip is defined
+    
+    - name: Ensure UFW is enabled (non-interactive)
+      ufw:
+        state: enabled
+        policy: allow
+        

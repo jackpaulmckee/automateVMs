@@ -1,21 +1,22 @@
 ---
-- name: Install Prometheus and Grafana on the monitoring host
+- name: Install Prometheus on the monitoring host
   hosts: monitoringHost
+  connection: local
   become: yes
 
   vars:
     prometheus_cfg_path: /etc/prometheus/prometheus.yml
     prometheus_pkg: prometheus
     prometheus_service: prometheus
-    grafana_pkg: grafana
-    grafana_service: grafana-server
+    # grafana_pkg: grafana
+    # grafana_service: grafana-server
   
   tasks:
-    - name: Install Prometheus and Grafana
+    - name: Install Prometheus
       apt:
         name: 
           - "{{ prometheus_pkg }}"
-          - "{{ grafana_pkg }}"
+          #- "{{ grafana_pkg }}"
         state: present
         update_cache: yes
     
@@ -34,11 +35,12 @@
         state: started
         enabled: yes
     
-    - name: Ensure Grafana is enabled and running
-      systemd:
-        name: "{{ grafana_service }}"
-        state: started
-        enabled: yes
+    # - name: Ensure Grafana is enabled and running
+    #   systemd:
+    #     name: "{{ grafana_service }}"
+    #     state: started
+    #     enabled: yes
+    # ^^^^^ skipping for now. It turns out that installing grafana requires extra steps. Grafana is not available in regular apt. The user needs to access an APT repo created by grafan labs
   
   handlers:
     - name: Restart Prometheus

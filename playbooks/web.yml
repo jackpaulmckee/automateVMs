@@ -6,7 +6,7 @@
   vars:
     web_package: apache2
     web_service: apache2
-    site_title: "hello from jacks ansible!"
+    site_title: "hello from Jack's webpage!"
     doc_root: /var/www/html
 
   tasks:
@@ -21,6 +21,20 @@
         name: "{{ web_service }}"
         state: started
         enabled: yes
+
+    - name: Ensure an images file on the target node exists
+      ansible.builtin.file:
+        path: /var/www/html/images
+        state: directory
+        mode: "0755"
+
+    - name: Upload JPEG from control node and send it to the target node
+      ansible.builtin.copy:
+        src: ../photos/palm_tree.jpg          # path relative to playbook
+        dest: "{{ doc_root }}/images/picture.jpg"
+        owner: www-data
+        group: www-data
+        mode: "0644"
 
     - name: deploy index.html
       template:

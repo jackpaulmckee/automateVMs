@@ -52,4 +52,14 @@ went in vSphere to: create a cluster, create VMs, upload and mount an iso file
 10/12/25:
 
 created prom_node_exporter.yml
-difference between apt and systemd, ansible when conditions, using group_vars files 
+difference between apt and systemd, ansible when conditions, using group_vars files
+PROMETHEUS IS RUNNING AND SCRAPING DATA
+
+
+10/13/25:
+
+added section to web.yml so that my servers can include a photo in the webpage
+running a webpage with a photo on an aws server
+docker install
+    - add the Docker APT repo to apt of my system
+    - install docker engine (docker engine talks to the kernel)

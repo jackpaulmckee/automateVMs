@@ -1,11 +1,11 @@
 ---
 - name: Install Prometheus on the monitoring host
   hosts: monitoringHost
-  connection: local
+  connection: local # <-- need to specify local connection otherwise ansible will try to ssh
   become: yes
 
   vars:
-    prometheus_cfg_path: /etc/prometheus/prometheus.yml
+    prometheus_cfg_path: /etc/prometheus/prometheus.yml # <-- path on the target machines
     prometheus_pkg: prometheus
     prometheus_service: prometheus
     # grafana_pkg: grafana

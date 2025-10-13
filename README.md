@@ -6,6 +6,16 @@ This repo allows the user to deploy manage AWS virtual machines via *ansible* or
 
 ## Get Set Up
 
+### Manual set ups
+
+install git via apt install  
+
+install VS code via website download  
+
+install docker via install instructions  
+https://docs.docker.com/engine/install/ubuntu/  
+
+
 #### Clone this repository
 
 install git

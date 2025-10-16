@@ -1,12 +1,18 @@
+# %%
+# import dependencies
 import time, requests
 import pandas as pd
 import matplotlib.pyplot as plt
 
+#%%
+# configure prometheus parameters
 PROM = "http://localhost:9090"   # e.g., http://192.168.94.140
 STEP = "15s"
 end = int(time.time())
 start = end - 60*60  # last 1 hour
 
+# %%
+# function to query prometheus
 def prom_range(query):
     r = requests.get(f"{PROM}/api/v1/query_range", params={
         "query": query,
@@ -28,6 +34,9 @@ def prom_range(query):
         frames.append(df)
     return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame(columns=["ts","value","instance"])
 
+# %%
+## query metrics
+
 # CPU utilization %
 cpu_q = '100 - (avg by(instance)(irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)'
 cpu = prom_range(cpu_q)
@@ -40,6 +49,7 @@ mem = prom_range(mem_q)
 disk_q = '100 * (node_filesystem_size_bytes{mountpoint="/",fstype!~"tmpfs|overlay"} - node_filesystem_free_bytes{mountpoint="/",fstype!~"tmpfs|overlay"}) / node_filesystem_size_bytes{mountpoint="/",fstype!~"tmpfs|overlay"}'
 disk = prom_range(disk_q)
 
+# %%
 # Plot CPU
 for inst, g in cpu.groupby("instance"):
     plt.figure()

@@ -11,7 +11,8 @@ This repo allows the user to deploy manage AWS virtual machines via *ansible* or
 install git via apt install  
 
 install VS code via website download  
-install the python extension within VS code "Python (ms-python.python)"  
+install Python extension within VS code (ms-python.python)  
+install Jupyter extension within VS code (ms-toolsai.jupyter)  
 
 install docker via install instructions  
 https://docs.docker.com/engine/install/ubuntu/  

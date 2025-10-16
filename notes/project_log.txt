@@ -63,3 +63,10 @@ running a webpage with a photo on an aws server
 docker install
     - add the Docker APT repo to apt of my system
     - install docker engine (docker engine talks to the kernel)
+
+
+10/16/25:
+
+researched memory computer metrics
+create python script to extract and plot data from PROMETHEUS. GOT IT TO WORK
+    - problematic to make it run. Needed python and jupyter extensions, pip install jupyter, update vs code, 

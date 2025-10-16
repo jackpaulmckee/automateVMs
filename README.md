@@ -11,6 +11,7 @@ This repo allows the user to deploy manage AWS virtual machines via *ansible* or
 install git via apt install  
 
 install VS code via website download  
+install the python extension within VS code "Python (ms-python.python)"  
 
 install docker via install instructions  
 https://docs.docker.com/engine/install/ubuntu/  
@@ -84,3 +85,12 @@ automateVMs/
 bash
 echo "hello"
 '''
+
+
+
+to do:
+- fix that "--ask-become-pass" is required to run every playbook
+- fix that I need to manually enter my amazon credentials every time my VM is shut off
+- fix that my github pushes require me to copy and paste my github token every time
+- fix that my monitor_stack.py currently has hard coded server instance ips. how do I make this dynamic with my ansible inventory?
+- add grafana capability

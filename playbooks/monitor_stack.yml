@@ -47,3 +47,8 @@
       systemd:
         name: "{{ prometheus_service }}"
         state: restarted
+
+
+
+# to use Prometheus --> http://localhost:9090
+

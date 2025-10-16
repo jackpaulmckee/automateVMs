@@ -65,3 +65,10 @@ vSphere High Availability (HA) and vSphere Fault Tolerance (FT):
         - HA is like an automatic backup generator — if the power goes out, it restarts your house.
         - FT is like having a second power line running in parallel — if one line fails, you don’t even flicker.
 vSphere Distributed Resource Scheduler (DRS) automatically balances workloads across the hosts in a cluster. So that no one host gets overloaded while the others sit idle.
+
+Docker
+    - image = recipe + file system snapshot; or it can be thought of as a template (immutable)
+    - container = a running instance of an image (ephemeral)
+    - dockerfile = how to build an image
+    - registry = where images live
+    - Layers = cached steps

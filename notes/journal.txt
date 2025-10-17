@@ -66,6 +66,11 @@ vSphere High Availability (HA) and vSphere Fault Tolerance (FT):
         - FT is like having a second power line running in parallel — if one line fails, you don’t even flicker.
 vSphere Distributed Resource Scheduler (DRS) automatically balances workloads across the hosts in a cluster. So that no one host gets overloaded while the others sit idle.
 
+    - events are records of user actions or system actions that occur on objects in vCenter server or on a host
+    - alarms are notifications that are activated in response to an event or a specified condition of metrics
+
+
+
 Docker
     - image = recipe + file system snapshot; or it can be thought of as a template (immutable)
     - container = a running instance of an image (ephemeral)

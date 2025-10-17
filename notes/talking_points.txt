@@ -1,0 +1,77 @@
+
+VMware ====================================
+Virtualization 101
+    - ESXi client
+        - manage host settings
+        - monitor host metrics
+        - generate logs of host metrics and events
+    - vSphere client
+        - create and clone and template VMs. Create VMs from the template
+        - configure VMs
+            - customize virtual hardware
+                - cpu, storage, disk, networking, compatibility tuning
+                - load an OS onto a VM using an OS ISO file from the vCenter Content Library repo
+        - use tags and searching to navigate and organize my inventory
+        - configured a host cluster to run vSphere High Availability (HA), Fault Tolerance (FT), and Distributed Resource Scheduler (DRS)
+        - browse events, browse alarms at the vCenter server level
+        - edited the alarm for host cpu usage
+        - edited cpu settings for shares, reservations, and limits
+        - used vMotion to migrate VMs from one host to another within the cluster
+        - look at performance charts of cpu usage of a host
+            - Create a chart of cpu usage per VM on the host
+            - create a chart of memory (active, ballooned, and compressed) per VM on the host
+Odyssey
+    - created and managed clusters, hosts, and VMs
+    - uploaded a hypervisor ISO file of ESXi to my region's datastore
+    - created a VM, mounted the ISO, installed and configured ESXi
+    - added the VM to my cluster as a nested host
+    - moved a host from one vCenter Server Appliance (VCSA) to another VCSA
+    - created a resource pool and added resources
+    - updated vCenter server
+
+
+
+
+
+monitor_stack.py
+    - imports dependencies
+    - configures prometheus query parameters
+    - performs the query, getting data from prometheus in the form of metric series for each server instance
+    - converts each metric series into a data frame (pandas library), then combines each data frame
+    - plots data (cpu, memory, disk) (matplotlib library)
+
+
+
+
+
+
+Why do I want to be here?
+    - SRE position
+        - I love the complexity and dimensions within dimensions of:
+            - SDLC, coding
+            - virtualization
+            - datacenter management
+        - I love the overall responsibility: ensure optimal performance of critical systems
+        - I love the potential for interdisciplinary tasks. 
+        - it seems like there is infinite room for growth
+        - the technologies are interesting to me plain and simple
+        - getting to know much better how the infrastructure works; that I've been working with and looking at
+        - combines the mindsets of my previous work experience
+        - this kind of work suits me well. Coding, virtualization, datacenter infrastructe. I can do this all day every day
+
+    - team
+    - mission
+
+
+Future plans:
+    - home lab:
+        - more VMware labs (networking, automation, esxtop)
+        - run more testing and data collection of computer metrics
+        - set up an environment where servers will be monitored, alerted on, investigated, and fixed
+        - containerize the git repo that i built
+    - skills:
+        - direct B team training and contribution
+        - SRE textbook
+        - SRE bootcamp
+        - certifications
+        - home lab

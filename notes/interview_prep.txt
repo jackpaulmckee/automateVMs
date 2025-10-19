@@ -45,6 +45,26 @@ monitor_stack.py
 
 
 
+Networking
+    - configure VLANs, subnets, routing, and switching via the CLI and by using understanding of OSI model, life of a data packet
+        - ROAS, trunk ports, access ports, variable length subnet masking,
+        - on interfaces: ip address, speed, duplex, port, description, enabling/disabling interfaces
+        - life of a packet: ARP requests/replies, MAC address tables
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Why do I want to be here?
     - SRE position
         - I love the complexity and dimensions within dimensions of:

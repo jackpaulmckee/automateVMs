@@ -32,8 +32,82 @@ Odyssey
 
 
 
+Git Repo============================================================
 
-monitor_stack.py
+I built a turn key git repo that allows a user to deploy and configure their own cloud compute resources on AWS.
+And provides the user with a few options for capabilities. In a way that is conveniently repeatable for a beginner user.
+
+
+bash commands and bash scripts:
+- familiarized myself with the shell, kernel, terminal, OSs, bash commands for essential computer interaction
+- quickly found that i could not use my physical host as the control node because windows does not support ansible
+    - learned about linux and linux distros
+- learned git and github. Confirm that I can push and clone code
+- set up an ubuntu server VM and an ubuntu desktop client VM. Confirm the VMs can ping eachother and the internet
+- used bash commands in the terminal of the client VM to ssh into the server
+    - serve a webpage on the server then access the webpage on the client and my physical host
+    - do some baseline hardening of the server:
+        - create ssh key pair for key authentication
+        - install and configure firewall so only the webpage port is allowed
+        - disable password authentication
+- now that i can do all these things manually, can i put them in a bash script?
+
+Ansible:
+- can i do these things with ansible playbooks? Set up a second ubuntu server VM 
+- familiarize myself with ansible documentation, syntax of yaml, jinja, html
+- set up virtual environment
+- use ansible to ping the target nodes
+- wrote the playbooks:
+    - to configure existing servers to each serve their own unique webpage
+    - to baseline harden each server
+- used ansible project file structure and features: .cfg, inventories, variables, modules, plugins, galaxy, collections, templates, .gitignore
+
+AWS:
+- familiarize myself with AWS EC2, be able to spin up instances using the AWS webiste
+- how do i connect ansible to AWS? Learn APIs and SDKs
+    - my playbook --> ansible AWS collection --> python SDK for AWS --> AWS EC2 API --> amazon EC2
+- connect my ansible control node to the AWS API
+- write ansible playbook to spin up EC2 instances of ubuntu servers
+- create a dynamic inventory for AWS so that my previous playbooks a can be used on these EC2 instances
+- wrote playbook to configure the target nodes to be monitored
+- wrote playbook to configure the control node to extract the data
+- wrote a python script to to query and plot the data
+
+
+Playbooks================================================
+
+web.yml
+    - ensures apache is installed and enabled
+    - ensures images file exists on target node
+    - sends a jpeg from control node to target node
+    - sends an html file from the control node to the target node
+    - reloads apache
+
+baseline_hardening.yml
+    - creates new users for sudo priveleges
+    - adds ssh keys for the new users
+    - configures firewall
+    - disable password auth
+    - restart ssh
+
+provision.yml
+    - stores AWS credentials
+    - stores values for an ssh key pair
+    - creates AWS security group allowing ssh and webpage listening
+    - launches the EC2 instances
+
+prom_node_exporter.yml
+    - install and enable prometheus node exporter on the target nodes
+    - install firewall
+    - allow prometheus server to scrape prometheus node exporter server
+    - enable firewall
+
+monitor_stack.yml
+    - install and enable prometheus on the control node
+    - use a template jinja file and ansible config to create the prometheus config
+    restart prometheus
+
+prometheus_plot.py
     - imports dependencies
     - configures prometheus query parameters
     - performs the query, getting data from prometheus in the form of metric series for each server instance
@@ -67,20 +141,25 @@ Networking
 
 Why do I want to be here?
     - SRE position
+        - I love the nature of the work
         - I love the complexity and dimensions within dimensions of:
             - SDLC, coding
             - virtualization
             - datacenter management
-        - I love the overall responsibility: ensure optimal performance of critical systems
-        - I love the potential for interdisciplinary tasks. 
-        - it seems like there is infinite room for growth
+            - datacenter hardware, virtual and physical
         - the technologies are interesting to me plain and simple
-        - getting to know much better how the infrastructure works; that I've been working with and looking at
+        - I'm interested in the overall responsibility: ensure optimal performance of critical systems
+        - I love the potential for interdisciplinary tasks. 
+        - it seems like there is so much room for growth
         - combines the mindsets of my previous work experience
+        - getting to know much better how the infrastructure works; that I've been working with and looking at
         - this kind of work suits me well. Coding, virtualization, datacenter infrastructe. I can do this all day every day
-
     - team
+        - I like the mindset - fast paced, growth oriented, motivated, capability oriented
+        - Dan and Lisa
     - mission
+        - i want to contribute to something bigger than myself. I want to use my time and energy to contribute to a mission that is critically important. I want to be a part of a mission that I am PROUD of. 
+        - this is it.
 
 
 Future plans:

@@ -1,33 +1,85 @@
 
-VMware ====================================
+
+Reliability Engineer===================================================
+data mapping
+    - combined data from multiple databases (multiple sources of information and different attributes) based on a primary key
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+VMware ==================================================================
 Virtualization 101
     - ESXi client
         - manage host settings
         - monitor host metrics
         - generate logs of host metrics and events
     - vSphere client
-        - create and clone and template VMs. Create VMs from the template
+        - create and manage clusters, hosts, VMs, and nested hosts
         - configure VMs
             - customize virtual hardware
-                - cpu, storage, disk, networking, compatibility tuning
-                - load an OS onto a VM using an OS ISO file from the vCenter Content Library repo
+                - cpu, memory, disk, networking, compatibility tuning
+        - mount an OS ISO file to a VM to install and configure the OS
+        - mount an ESXi hypervisor ISO file to a VM, and install and configure ESXi
         - use tags and searching to navigate and organize my inventory
-        - configured a host cluster to run vSphere High Availability (HA), Fault Tolerance (FT), and Distributed Resource Scheduler (DRS)
-        - browse events, browse alarms at the vCenter server level
-        - edited the alarm for host cpu usage
-        - edited cpu settings for shares, reservations, and limits
-        - used vMotion to migrate VMs from one host to another within the cluster
-        - look at performance charts of cpu usage of a host
+        - configure a host cluster to run vSphere High Availability (HA), Fault Tolerance (FT), and Distributed Resource Scheduler (DRS)
+        - use vMotion to migrate VMs from one host to another within the cluster
+        - move hosts from one vCenter Server Appliance (VCSA) to another VCSA
+        - create and edit resource pools
+        - use events and alarms: I can look at, edit, and create
+            - edit the alarm for host cpu usage
+        - edit settings of virtual hardware for shares, reservations, and limits
+        - look at and create performance charts of cpu usage of a host
             - Create a chart of cpu usage per VM on the host
             - create a chart of memory (active, ballooned, and compressed) per VM on the host
-Odyssey
-    - created and managed clusters, hosts, and VMs
-    - uploaded a hypervisor ISO file of ESXi to my region's datastore
-    - created a VM, mounted the ISO, installed and configured ESXi
-    - added the VM to my cluster as a nested host
-    - moved a host from one vCenter Server Appliance (VCSA) to another VCSA
-    - created a resource pool and added resources
-    - updated vCenter server
+        - interact with datastorers of varying use cases
+
+
+    Whats next?
+    - if possible, take a look at your environment
+    - learn more features (networking, security, automation, CLI)
+    - run more testing of metrics
+
+    Questions:
+    - what does your vSphere environment look like? What is the magnitudes and quantities of resources, both provided and consumed?
+    - how do your team members typically learn about VMware products? 
+    - what do you recommend is the best path for me to upskill in this area?
+
+
+
+
+
+AD DS==========================================================================
+- ISO boot issues
+    - Tried configs of virtual hardware, firmware modes, controller types
+    - Tried versions of windows server and vmware workstation pro
+    - Optimal file locations for VMs and virtual media
+    - physical host virtualization layer conflict
+- VHD boot
+    - .vhd is not compatible with vmware
+    - Convert .vhd to .vmdk
+
+- Used the windows server vm to create a domain controller
+    - Configure networking: server’s ip, subnet mask, gateway address
+    - Use the server’s self ip as the DNS address
+    - Promote the server to being a domain controller
+- Created an organizational unit with multiple users
+- Joined a client to the AD
+    - Use the domain controller ip as the client’s DNS address
+    - Join the domain via This PC system settings
+
 
 
 
@@ -43,9 +95,9 @@ bash commands and bash scripts:
 - quickly found that i could not use my physical host as the control node because windows does not support ansible
     - learned about linux and linux distros
 - learned git and github. Confirm that I can push and clone code
-- set up an ubuntu server VM and an ubuntu desktop client VM. Confirm the VMs can ping eachother and the internet
-- used bash commands in the terminal of the client VM to ssh into the server
-    - serve a webpage on the server then access the webpage on the client and my physical host
+- set up a linux ubuntu server VM and a linux ubuntu desktop client VM. Confirm the VMs can ping eachother and the internet
+- used bash commands in the terminal of the client VM to ssh into the server VMs
+    - serve a webpage on the server then access the webpage on the client
     - do some baseline hardening of the server:
         - create ssh key pair for key authentication
         - install and configure firewall so only the webpage port is allowed
@@ -53,8 +105,8 @@ bash commands and bash scripts:
 - now that i can do all these things manually, can i put them in a bash script?
 
 Ansible:
-- can i do these things with ansible playbooks? Set up a second ubuntu server VM 
-- familiarize myself with ansible documentation, syntax of yaml, jinja, html
+- can i do these things with ansible playbooks?
+- familiarize myself with ansible's documentation and syntaxes: yaml, jinja, html
 - set up virtual environment
 - use ansible to ping the target nodes
 - wrote the playbooks:
@@ -63,15 +115,26 @@ Ansible:
 - used ansible project file structure and features: .cfg, inventories, variables, modules, plugins, galaxy, collections, templates, .gitignore
 
 AWS:
-- familiarize myself with AWS EC2, be able to spin up instances using the AWS webiste
+- familiarize myself with AWS EC2, learned how to spin up instances using the AWS webiste
 - how do i connect ansible to AWS? Learn APIs and SDKs
     - my playbook --> ansible AWS collection --> python SDK for AWS --> AWS EC2 API --> amazon EC2
 - connect my ansible control node to the AWS API
-- write ansible playbook to spin up EC2 instances of ubuntu servers
-- create a dynamic inventory for AWS so that my previous playbooks a can be used on these EC2 instances
-- wrote playbook to configure the target nodes to be monitored
+- wrote ansible playbook to spin up EC2 instances of ubuntu servers
+- created a dynamic inventory using an AWS plugin so that my previous playbooks a can be used on these EC2 instances
+- wrote playbook to configure the target nodes to be able to be monitored
 - wrote playbook to configure the control node to extract the data
-- wrote a python script to to query and plot the data
+- wrote a python script to query and plot the data
+
+
+
+
+    Whats next?
+    - more testing of metrics
+    - set up an environment where servers will be monitored, alerted on, investigated, and fixed
+    - containerize the repo
+
+    Questions:
+
 
 
 Playbooks================================================
@@ -119,16 +182,12 @@ prometheus_plot.py
 
 
 
-Networking
-    - configure VLANs, subnets, routing, and switching via the CLI and by using understanding of OSI model, life of a data packet
-        - ROAS, trunk ports, access ports, variable length subnet masking,
-        - on interfaces: ip address, speed, duplex, port, description, enabling/disabling interfaces
-        - life of a packet: ARP requests/replies, MAC address tables
+Networking=======================================
 
-
-
-
-
+- configure VLANs, subnets, routing, and switching via the CLI and by using understanding of OSI model, life of a data packet
+    - ROAS, trunk ports, access ports, variable length subnet masking,
+    - on interfaces: ip address, speed, duplex, port, description, enabling/disabling interfaces
+    - life of a packet: ARP requests/replies, MAC address tables
 
 
 
@@ -174,3 +233,12 @@ Future plans:
         - SRE bootcamp
         - certifications
         - home lab
+
+
+
+
+
+
+Questions:
+- how does your team define and measure system health?
+- what is your incident management process like?
